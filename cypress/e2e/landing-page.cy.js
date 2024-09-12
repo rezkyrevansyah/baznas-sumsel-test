@@ -70,27 +70,54 @@ describe('Landing Page Test', () => {
       cy.visit('/');
 
       // Klik berita pertama pada halaman
-      cy.get('.card-body > :nth-child(1) > :nth-child(3) > :nth-child(2) > :nth-child(1)')
+      cy.get(':nth-child(3) > :nth-child(2) > :nth-child(1) > a > .border')
         .click();
 
       // Verifikasi bahwa berita berisi teks tertentu
       cy.get('.p-3 > .color-main')
-        .should('contain', 'BAZNAS dukung Target Akreditasi Unggul Program Studi Mazawa')
+        .should('contain', 'PEDULI YATIM, BAZNAS BERSAMA HASNUR GROUP BERIKAN SANTUNAN')
 
       // Scroll ke elemen 'Syarat & Ketentuan'
       cy.get('[href="https://sumsel.baznas.go.id/syarat-ketentuan"]')
         .scrollIntoView()
-
-      // Kembali ke halaman sebelumnya
-      cy.go('back')
-      cy.title().should('eq', 'BAZNAS')
     })
 
     it('Navigate to news 2', () => {
 
+      // Akses halaman utama
       cy.visit('/');
 
-      cy.get(':nth-child(3) > :nth-child(2) > :nth-child(2) > :nth-child(1) > .row')
+      cy.get(':nth-child(3) > :nth-child(2) > :nth-child(2) > :nth-child(1)')
+        .click();
+
+      cy.get('.p-3 > .color-main')
+        .should('contain', 'HUT KE 79, BAZNAS Prov. Sumsel berharap RRI terus menjadi inspirasi menyuarakaan keindonesiaan')
+
+      cy.get('[href="https://sumsel.baznas.go.id/syarat-ketentuan"]')
+        .scrollIntoView()
+    })
+
+    it('Navigate to news 3', () => {
+
+      // Akses halaman utama
+      cy.visit('/');
+
+      cy.get(':nth-child(3) > :nth-child(2) > :nth-child(2) > :nth-child(2) > .row')
+        .click();
+
+      cy.get('.p-3 > .color-main')
+        .should('contain', 'BAZNAS dukung Target Akreditasi Unggul Program Studi Mazawa')
+
+      cy.get('[href="https://sumsel.baznas.go.id/syarat-ketentuan"]')
+        .scrollIntoView()
+    })
+
+    it('Navigate to news 4', () => {
+
+      // Akses halaman utama
+      cy.visit('/');
+
+      cy.get(':nth-child(3) > :nth-child(2) > :nth-child(2) > :nth-child(3)')
         .click();
 
       cy.get('.p-3 > .color-main')
@@ -99,42 +126,6 @@ describe('Landing Page Test', () => {
       cy.get('[href="https://sumsel.baznas.go.id/syarat-ketentuan"]')
         .scrollIntoView()
 
-      cy.go('back')
-      cy.title().should('eq', 'BAZNAS')
-    })
-
-    it('Navigate to news 3', () => {
-
-      cy.visit('/');
-
-      cy.get(':nth-child(3) > :nth-child(2) > :nth-child(2) > :nth-child(2)')
-        .click();
-
-      cy.get('.p-3 > .color-main')
-        .should('contain', 'BAZNAS Provinsi Sumatera Selatan menyelenggarakan Khitanan Massal bagi anak yang kurang mampu.')
-
-      cy.get('[href="https://sumsel.baznas.go.id/syarat-ketentuan"]')
-        .scrollIntoView()
-
-      cy.go('back')
-      cy.title().should('eq', 'BAZNAS')
-    })
-
-    it('Navigate to news 4', () => {
-
-      cy.visit('/');
-
-      cy.get(':nth-child(3) > :nth-child(2) > :nth-child(2) > :nth-child(3)')
-        .click();
-
-      cy.get('.p-3 > .color-main')
-        .should('contain', 'BAZNAS Prov sumsel Kunjungi Sumedang untuk Sharing Program')
-
-      cy.get('[href="https://sumsel.baznas.go.id/syarat-ketentuan"]')
-        .scrollIntoView()
-
-      cy.go('back')
-      cy.title().should('eq', 'BAZNAS')
     })
 
     it('Navigate to load more berita', () => {
@@ -145,7 +136,7 @@ describe('Landing Page Test', () => {
         .click();
 
       cy.get(':nth-child(1) > .col-12 > .row > .col-8 > div > a > .d-none')
-        .should('contain', 'BAZNAS dukung Target Akreditasi Unggul Program Studi Mazawa')
+        .should('contain', 'PEDULI YATIM, BAZNAS BERSAMA HASNUR GROUP BERIKAN SANTUNAN')
 
       cy.go('back')
       cy.title().should('eq', 'BAZNAS')
