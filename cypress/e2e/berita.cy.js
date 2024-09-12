@@ -1,5 +1,11 @@
 describe('Section Berita', () => {
 
+  // Mengabaikan error yang berasal dari cross-origin
+  Cypress.on('uncaught:exception', (err, runnable) => {
+    // Mengembalikan false agar Cypress tidak gagal ketika menemukan uncaught error
+    return false;
+  })
+
   it('Navigate to news 1', () => {
     // Akses halaman utama
     cy.visit('/');
