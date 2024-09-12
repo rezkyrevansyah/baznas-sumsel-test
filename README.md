@@ -3,7 +3,7 @@
 Landing page test untuk Baznas Sumsel.
 
 <p align="center">
-  <img src="https://bitbucket.org/cypress-rezky/baznas-sumsel-test/raw/0df46deea09f4a4f7db82115bd5d95588583ceda/cypress/assets/reportSuccess.png" alt="Test Success">
+  <img src="https://raw.githubusercontent.com/rezkyrevansyah/baznas-sumsel-test/main/cypress/assets/reportSuccess.png" alt="Test Success">
 </p>
 
 ## Documentation
@@ -27,7 +27,7 @@ Landing page test untuk Baznas Sumsel.
    Jika tidak ditambahkan, test akan menghasilkan error seperti berikut:
 
    <p align="center">
-     <img src="https://bitbucket.org/cypress-rezky/baznas-sumsel-test/raw/9b4855cb82b37da5a6e5694ece53aae56ae9a657/cypress/assets/errorUrl.png" alt="Error URL">
+     <img src="https://raw.githubusercontent.com/rezkyrevansyah/baznas-sumsel-test/main/cypress/assets/errorUrl.png" alt="Error URL">
    </p>
 
 2. Pada setiap section test, harus didahului dengan:
@@ -47,5 +47,5 @@ Landing page test untuk Baznas Sumsel.
    Karena akan menghasilkan error seperti berikut:
 
    <p align="center">
-     <img src="https://bitbucket.org/cypress-rezky/baznas-sumsel-test/raw/9b4855cb82b37da5a6e5694ece53aae56ae9a657/cypress/assets/errorBack.png" alt="Error Back">
+     <img src="https://raw.githubusercontent.com/rezkyrevansyah/baznas-sumsel-test/main/cypress/assets/errorBack.png" alt="Error Back">
    </p>
