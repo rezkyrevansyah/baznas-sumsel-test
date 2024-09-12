@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/rezkyrevansyah/baznas-sumsel-test/issues"
   },
-  "homepage": "https://github.com/rezkyrevansyah/baznas-sumsel-test#readme"
+  "homepage": "https://github.com/rezkyrevansyah/baznas-sumsel-test#readme",
+  "devDependencies": {
+    "cypress": "^13.14.2",
+    "cypress-mochawesome-reporter": "^3.8.2"
+  }
 }
