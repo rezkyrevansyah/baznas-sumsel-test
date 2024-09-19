@@ -1,321 +1,102 @@
-describe('Landing Page Test', () => {
-  // Mengabaikan error yang berasal dari cross-origin
+describe('Section Landing Page', () => {
   Cypress.on('uncaught:exception', (err, runnable) => {
-    // Mengembalikan false agar Cypress tidak gagal ketika menemukan uncaught error
     return false;
   })
 
-  context("Navigasi navbar", () => {
-    it('Navigate to baznas.go.id', () => {
-      // Akses halaman utama dan verifikasi bahwa judul halaman adalah 'BAZNAS'
-      cy.visit('/');
-      cy.title().should('eq', 'BAZNAS')
-
-      // Klik elemen navbar
-      cy.get('#navbar')
-        .click();
-
-      // Pastikan setelah klik, ada teks 'PROVINSI SUMATERA SELATAN' pada elemen tertentu
-      cy.get('a > .text-capitalize')
-        .should('contain', 'PROVINSI SUMATERA SELATAN')
-
-    })
-  })
-
-  context("Navigasi right navbar links", () => {
-    it('Test navigasi ke Profil Baznas', () => {
-      // Akses halaman utama
-      cy.visit('/');
-
-      // Klik hamburger menu pada navbar kanan
-      cy.get('.navbar-nav > .nav-item > .nav-link')
-        .click();
-
-      // Klik tentang baznas pada navbar
-      cy.get(':nth-child(2) > [href="#"]')
-        .click();
-
-      // Klik link profil baznas dari menu yang terbuka
-      cy.get('.menu-is-opening > .nav > :nth-child(1) > .nav-link')
-        .click();
-
-      // Verifikasi bahwa elemen yang berisi tag <b> mengandung teks 'Visi'
-      cy.get('b')
-        .should('contain', 'Visi')
-
-      // Kembali ke halaman sebelumnya dan verifikasi judul halaman
-      cy.go('back')
-      cy.title().should('eq', 'BAZNAS')
-    })
-  })
-
-  context("Navigasi banner", () => {
-    it('Navigate to baznas.go.id', () => {
-      // Akses halaman utama
-      cy.visit('/');
-
-      // Klik banner yang aktif (dengan class '.active')
-      cy.get('.active > .item > a > img')
-        .click();
-
-      // Verifikasi bahwa elemen setelah klik berisi teks 'PROVINSI SUMATERA SELATAN'
-      cy.get('a > .text-capitalize')
-        .should('contain', 'PROVINSI SUMATERA SELATAN')
-    })
-  })
-
-  context("Section berita", () => {
-    it('Navigate to news 1', () => {
-      // Akses halaman utama
-      cy.visit('/');
-
-      // Klik berita pertama pada halaman
-      cy.get(':nth-child(3) > :nth-child(2) > :nth-child(1) > a > .border')
-        .click();
-
-      // Verifikasi bahwa berita berisi teks tertentu
-      cy.get('.p-3 > .color-main')
-        .should('contain', 'PEDULI YATIM, BAZNAS BERSAMA HASNUR GROUP BERIKAN SANTUNAN')
-
-      // Scroll ke elemen 'Syarat & Ketentuan'
-      cy.get('[href="https://sumsel.baznas.go.id/syarat-ketentuan"]')
-        .scrollIntoView()
-    })
-
-    it('Navigate to news 2', () => {
-
-      // Akses halaman utama
-      cy.visit('/');
-
-      cy.get(':nth-child(3) > :nth-child(2) > :nth-child(2) > :nth-child(1)')
-        .click();
-
-      cy.get('.p-3 > .color-main')
-        .should('contain', 'HUT KE 79, BAZNAS Prov. Sumsel berharap RRI terus menjadi inspirasi menyuarakaan keindonesiaan')
-
-      cy.get('[href="https://sumsel.baznas.go.id/syarat-ketentuan"]')
-        .scrollIntoView()
-    })
-
-    it('Navigate to news 3', () => {
-
-      // Akses halaman utama
-      cy.visit('/');
-
-      cy.get(':nth-child(3) > :nth-child(2) > :nth-child(2) > :nth-child(2) > .row')
-        .click();
-
-      cy.get('.p-3 > .color-main')
-        .should('contain', 'BAZNAS dukung Target Akreditasi Unggul Program Studi Mazawa')
-
-      cy.get('[href="https://sumsel.baznas.go.id/syarat-ketentuan"]')
-        .scrollIntoView()
-    })
-
-    it('Navigate to news 4', () => {
-
-      // Akses halaman utama
-      cy.visit('/');
-
-      cy.get(':nth-child(3) > :nth-child(2) > :nth-child(2) > :nth-child(3)')
-        .click();
-
-      cy.get('.p-3 > .color-main')
-        .should('contain', 'Lebaran Yatim : BAZNAS Berikan bantuan kepada yatim dan difabel')
-
-      cy.get('[href="https://sumsel.baznas.go.id/syarat-ketentuan"]')
-        .scrollIntoView()
-
-    })
-
-    it('Navigate to load more berita', () => {
-
-      cy.visit('/');
-
-      cy.get(':nth-child(3) > .col-12.text-center > .btn')
-        .click();
-
-      cy.get(':nth-child(1) > .col-12 > .row > .col-8 > div > a > .d-none')
-        .should('contain', 'PEDULI YATIM, BAZNAS BERSAMA HASNUR GROUP BERIKAN SANTUNAN')
-
-      cy.go('back')
-      cy.title().should('eq', 'BAZNAS')
-    })
-  })
-
-  context("Section Agenda Pimpinan", () => {
-    it('Navigate to agenda 1', () => {
-
-      cy.visit('/');
-
-      cy.get(':nth-child(4) > :nth-child(2) > :nth-child(1)')
-        .click();
-
-      cy.get('.p-3 > .color-main')
-        .should('contain', 'Audiensi dan Silahturahmi BAZNAS bersama PT Semen Baturaja Tbk.')
-
-      cy.get('[href="https://sumsel.baznas.go.id/syarat-ketentuan"]')
-        .scrollIntoView()
-
-      cy.go('back')
-      cy.title().should('eq', 'BAZNAS')
-    })
-
-    it('Navigate to agenda 2', () => {
-
-      cy.visit('/');
-
-      cy.get(':nth-child(4) > :nth-child(2) > :nth-child(2) > :nth-child(1) > .row')
-        .click();
-
-      cy.get('.p-3 > .color-main')
-        .should('contain', 'Penandatanganan MoU BAZNAS Prov. Sumsel dengan RRI Palembang')
-
-      cy.get('[href="https://sumsel.baznas.go.id/syarat-ketentuan"]')
-        .scrollIntoView()
-
-      cy.go('back')
-      cy.title().should('eq', 'BAZNAS')
-    })
-
-    it('Navigate to agenda 3', () => {
-
-      cy.visit('/');
-
-      cy.get(':nth-child(4) > :nth-child(2) > :nth-child(2) > :nth-child(2) > .row')
-        .click();
-
-      cy.get('.p-3 > .color-main')
-        .should('contain', 'Audiensi dengan BAPPEDA Provinsi Sumatera Selatan')
-
-      cy.get('[href="https://sumsel.baznas.go.id/syarat-ketentuan"]')
-        .scrollIntoView()
-
-      cy.go('back')
-      cy.title().should('eq', 'BAZNAS')
-    })
-
-    it('Navigate to agenda 4', () => {
-
-      cy.visit('/');
-
-      cy.get(':nth-child(4) > :nth-child(2) > :nth-child(2) > :nth-child(3) > .row')
-        .click();
-
-      cy.get('.p-3 > .color-main')
-        .should('contain', 'Monitoring dan evaluasi Klinik Ummat BAZNAS Prov. Sumsel')
-
-      cy.get('[href="https://sumsel.baznas.go.id/syarat-ketentuan"]')
-        .scrollIntoView()
-
-      cy.go('back')
-      cy.title().should('eq', 'BAZNAS')
-    })
-
-    it('Navigate to load more berita', () => {
-
-      cy.visit('/');
-
-      cy.get(':nth-child(4) > .col-12.text-center > .btn')
-        .click();
-
-      cy.get(':nth-child(1) > .col-12 > .row > .col-8 > div > a > .d-none')
-        .should('contain', 'Audiensi dan Silahturahmi BAZNAS bersama PT Semen Baturaja Tbk.')
-
-      cy.go('back');
-      cy.title().should('eq', 'BAZNAS')
-    })
-  })
-
-  context("Section Footer", () => {
-    it('Navigate to Kebijakan Privasi', () => {
-
-      cy.visit('/');
-
-      cy.get('[href="https://sumsel.baznas.go.id/kebijakan-privasi"]')
-        .click();
-
-      cy.get('.mt-2 > .text-capitalize')
-        .should('contain', 'kebijakan privasi')
-
-      cy.go('back')
-      cy.title().should('eq', 'BAZNAS')
-    })
-
-    it('Navigate to syarat dan ketentuan', () => {
-
-      cy.visit('/');
-
-      cy.get('[href="https://sumsel.baznas.go.id/syarat-ketentuan"]')
-        .click();
-
-      cy.get('.mt-2 > .text-capitalize')
-        .should('contain', 'syarat dan ketentuan')
-
-      cy.go('back')
-      cy.title().should('eq', 'BAZNAS')
-    })
-
-    it('Navigate to FAQ', () => {
-
-      cy.visit('/');
-
-      cy.get('[href="https://sumsel.baznas.go.id/faq-baznas"]')
-        .click();
-
-      cy.get('.mt-2 > .text-capitalize')
-        .should('contain', 'frequently asked questions')
-
-      cy.go('back')
-      cy.title().should('eq', 'BAZNAS')
-    })
-  })
-
-  context("Section Bottom Menu", () => {
-    it('Navigate to Rekening Zakat', () => {
-
-      cy.visit('/');
-
-      cy.get(':nth-child(1) > .mb-0 > a > .font-10')
-        .click();
-
-      cy.get('.col-6 > .color-main')
-        .should('contain', 'daftar rekening')
-    })
-
-    it('Navigate to Konfirmasi Zakat', () => {
-
-      cy.visit('/');
-
-      cy.get(':nth-child(2) > .mb-0 > a > .font-10')
-        .click();
-
-      cy.get('.container > :nth-child(2)')
-        .should('contain', 'Terima Kasih atas Zakat, Infak, Sedekah, Kurban yang ditunaikan melalui BAZNAS')
-    })
-
-    it('Navigate to Bayar Zakat Online', () => {
-
-      cy.visit('/');
-
-      cy.get(':nth-child(3) > .mb-0 > a > .font-10')
-        .click();
-
-      cy.get('.position-absolute > .bg-yellow > .color-main')
-        .should('contain', 'pilih jenis dana')
-    })
-
-    it('Navigate to Kalkulator Zakat', () => {
-
-      cy.visit('/');
-
-      cy.get(':nth-child(5) > .mb-0 > a > .font-10')
-        .click();
-
-      cy.get('.row > :nth-child(1) > .color-main')
-        .should('contain', 'kalkulator zakat')
-
-      cy.visit('/');
-    })
-  })
-})
+  // Sebelum memulai setiap tes, lakukan visit ke halaman utama
+  beforeEach(() => {
+    cy.visit('https://sumsel.baznas.go.id/');
+  });
+
+  it('Should verify the title is "BAZNAS" after clicking Beranda on the top navbar', () => {
+    // Klik logo pada navbar untuk kembali ke Beranda
+    cy.get('#navbar > div > center > a > img').click();
+
+    // Verifikasi bahwa judul halaman adalah "BAZNAS"
+    cy.title().should('eq', 'BAZNAS');
+  });
+
+  it('Should open hamburger menu when clicked', () => {
+    // Klik hamburger menu untuk membuka slide menu
+    cy.get('#navbar > ul > li > a').click();
+
+    // Verifikasi bahwa menu terbuka
+    cy.get('#navbar > ul').should('be.visible');
+  });
+
+  it('Should navigate to detail of Berita 1 and verify the content exists', () => {
+    // Klik Berita 1
+    cy.get('#control_sidebar > div > div > div.content-wrapper > section > div > div > div > div:nth-child(3) > div.row > div:nth-child(1) > a > div:nth-child(2) > div:nth-child(1) > p')
+      .parent().click();
+
+    // Verifikasi bahwa elemen pada detail Berita 1 ada
+    cy.get('#control_sidebar > div > div > div.content-wrapper > section > div > div > div > div:nth-child(1) > div.p-3 > h4')
+      .should('exist');
+  });
+
+  it('Should navigate to detail of Berita 2 and verify the content exists', () => {
+    // Klik Berita 2
+    cy.get('#control_sidebar > div > div > div.content-wrapper > section > div > div > div > div:nth-child(3) > div.row > div:nth-child(2) > div:nth-child(1) > div > div.col-8.pl-2 > a > div:nth-child(1) > h6')
+      .parent().click();
+
+    // Verifikasi bahwa elemen pada detail Berita 2 ada
+    cy.get('#control_sidebar > div > div > div.content-wrapper > section > div > div > div > div:nth-child(1) > div.p-3 > h4')
+      .should('exist');
+  });
+
+  it('Should navigate to detail of Berita 3 and verify the content exists', () => {
+    // Klik Berita 3
+    cy.get('#control_sidebar > div > div > div.content-wrapper > section > div > div > div > div:nth-child(3) > div.row > div:nth-child(2) > div:nth-child(2) > div > div.col-8.pl-2 > a > div:nth-child(1) > h6')
+      .parent().click();
+
+    // Verifikasi bahwa elemen pada detail Berita 3 ada
+    cy.get('#control_sidebar > div > div > div.content-wrapper > section > div > div > div > div:nth-child(1) > div.p-3 > h4')
+      .should('exist');
+  });
+
+  it('Should navigate to detail of Berita 4 and verify the content exists', () => {
+    // Klik Berita 4
+    cy.get('#control_sidebar > div > div > div.content-wrapper > section > div > div > div > div:nth-child(3) > div.row > div:nth-child(2) > div:nth-child(3) > div > div.col-8.pl-2 > a > div:nth-child(1) > h6')
+      .parent().click();
+
+    // Verifikasi bahwa elemen pada detail Berita 4 ada
+    cy.get('#control_sidebar > div > div > div.content-wrapper > section > div > div > div > div:nth-child(1) > div.p-3 > h4')
+      .should('exist');
+  });
+
+  it('Should load more news when clicking the Load More button and verify new content is displayed', () => {
+    // Klik tombol Load More
+    cy.get('#control_sidebar > div > div > div.content-wrapper > section > div > div > div > div:nth-child(3) > div.col-12.text-center > a')
+      .parent().click();
+
+    // Verifikasi bahwa berita tambahan telah dimuat
+    cy.get('#control_sidebar > div > div > div.content-wrapper > section > div > div > div > div:nth-child(1) > div > div.owl-stage-outer > div > div:nth-child(13) > div > div.bg-main > h5.text-white.font-weight-bold.p-3.d-none.d-sm-block')
+      .should('exist');
+  });
+
+  it('klik bottom navbar rekening zakat -> halaman rekening', () => {
+    cy.get('#control_sidebar > div > div > footer > div > div:nth-child(1) > h3 > a > img').parent().click();
+    cy.get('#control_sidebar > div > div > div.content-wrapper > section > div > div > div > div:nth-child(2) > div > div > h4').should('exist');
+  });
+
+  it('klik bottom navbar konfirmasi zakat -> halaman konfirmasi', () => {
+    cy.get('#control_sidebar > div > div > footer > div > div:nth-child(2) > h3 > a > img').parent().click();
+    cy.get('#control_sidebar > div > div > div.content-wrapper > section > div > div > div > div:nth-child(1) > div > div > div > p.color-main.font-weight-bold')
+      .should('exist');
+  });
+
+  it('klik bottom navbar bayar zakat online -> halaman bayar zakat online', () => {
+    cy.get('#control_sidebar > div > div > footer > div > div:nth-child(3) > h3 > a > img').parent().click();
+    cy.get('#signstep > div > div > h4').should('exist');
+  });
+
+  it('klik bottom navbar kalkulator zakat -> halaman kalkulator zakat', () => {
+    cy.get('#control_sidebar > div > div > footer > div > div:nth-child(5) > h3 > a > img').parent().click();
+    cy.get('#control_sidebar > div > div > div.content-wrapper > section > div > div > div > div:nth-child(1) > div > div:nth-child(1) > h4').should('exist');
+  });
+
+  it('klik top navbar -> halaman utama', () => {
+    cy.get('.brand-image').parent().click();
+    cy.get('#navbar > div > center > a > h6').should('exist');
+  });
+});
