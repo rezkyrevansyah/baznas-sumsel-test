@@ -64,5 +64,39 @@ describe('Konfirmasi Zakat', () => {
         // test email
         cy.get('#email').eq(0).type("testing@gmail.com")
 
+        // test tanggal transfer
+        cy.get('#konfirmasi > div:nth-child(4) > div:nth-child(2) > div > input').type('2024-09-20');
+
+        // test asal bank
+        cy.get('#bank_asal').eq(0).type("testing")
+
+        // test tujuan bank
+        cy.get('#bank_name').select(0)
+        cy.get('#bank_name').select(1)
+        cy.get('#bank_name').select(2)
+        cy.get('#bank_name').select(3)
+        cy.get('#bank_name').select(4)
+        cy.get('#bank_name').select(5)
+
+        // test nominal
+        cy.get('#nominal').eq(0).type("1000000")
+
+        // test cara pembayaran
+        cy.get(':nth-child(7) > :nth-child(1) > .form-group > .form-control').select(0)
+        cy.get(':nth-child(7) > :nth-child(1) > .form-group > .form-control').select(1)
+        cy.get(':nth-child(7) > :nth-child(1) > .form-group > .form-control').select(2)
+        cy.get(':nth-child(7) > :nth-child(1) > .form-group > .form-control').select(3)
+
+        // test catatan
+        cy.get(':nth-child(7) > :nth-child(2) > .form-group > .form-control').eq(0).type("testing")
+
+        // test file upload 
+        cy.get('input[type="file"]').selectFile('cypress\\assets\\testing.jpg')
+
+        // test captcha
+        // cy.get('#captcha_code').eq(0).type("")
+
+        // submit button
+        cy.get(':nth-child(2) > .btn').click()
     })
 })
