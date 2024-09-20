@@ -10,7 +10,7 @@ describe('BAZNAS Sumsel Website Test - Negative Case', () => {
         cy.visit('/');
 
         // Cek apakah title halaman tidak sesuai dengan yang diharapkan
-        cy.title().should('not.eq', 'BAZNAS - Not Found');
+        cy.title().should('not.eq', 'BAZNAS');
 
         // Coba klik logo pada navbar, lalu cek apakah elemen tertentu tidak ada
         cy.get('#navbar > div > center > a > img').click();
