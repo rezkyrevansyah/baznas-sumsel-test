@@ -109,7 +109,7 @@ describe('Konfirmasi Zakat', () => {
         // cy.get('#captcha_code').eq(0).type("")
 
         // submit button
-        cy.get(':nth-child(2) > .btn').click()
+        cy.get(':nth-child(1) > .btn').click()
 
         cy.on('window:alert', (message) => {
             expect(message).to.equal("Captcha yang Anda masukan tidak cocok")
