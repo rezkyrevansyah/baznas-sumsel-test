@@ -71,7 +71,6 @@ describe('Bayar Zakat', () => {
         // nama
         cy.get('#name').eq(0).type("testing")
 
-
         // no hp
         cy.get('#handphone').eq(0).type("0812344856789")
 

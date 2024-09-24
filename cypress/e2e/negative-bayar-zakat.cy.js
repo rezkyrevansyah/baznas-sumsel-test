@@ -1,3 +1,8 @@
+// sapaan tidak diisi
+// nama tidak diisi
+// no telp tidak diisi
+// email tidak diisi
+
 describe('Bayar Zakat', () => {
 
     Cypress.on('uncaught:exception', (err, runnable) => {

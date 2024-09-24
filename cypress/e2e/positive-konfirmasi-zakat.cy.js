@@ -6,7 +6,7 @@ describe('Konfirmasi Zakat', () => {
 
     it('Positive Test', () => {
 
-        cy.visit('https://sumsel.baznas.go.id/konfirmasi-zis');
+        cy.visit('https://kotayogya.baznas.go.id/konfirmasi-zis');
 
         // test sapaan
         cy.get('#konfirmasi > div:nth-child(1) > div:nth-child(1) > div > select').select(0).should('have.value', 'Bapak')
@@ -24,36 +24,36 @@ describe('Konfirmasi Zakat', () => {
         // test jenis pembayaran infak
         cy.get('#type_of_fund').select(1).should('have.value', 'Infak')
 
-        cy.get('#jenis').select(0)
-        cy.get('#jenis').select(1)
-        cy.get('#jenis').select(2)
-        cy.get('#jenis').select(3)
-        cy.get('#jenis').select(4)
-        cy.get('#jenis').select(5)
-        cy.get('#jenis').select(6)
-        cy.get('#jenis').select(7)
-        cy.get('#jenis').select(8)
-        cy.get('#jenis').select(9)
-        cy.get('#jenis').select(10)
-        cy.get('#jenis').select(11)
+        cy.get('#jenis').select(0).should('have.value', 'Infak Sedekah', 'Contains', 'Infaq/Sedekah')
+        cy.get('#jenis').select(1).should('have.value', 'Infak Operasional', 'contains', 'Sedekah BAZNAS')
+        cy.get('#jenis').select(2).should('have.value', 'Dompet Bencana & Kemanusiaan', 'contains', 'Dompet Bencana & Kemanusiaan')
+        cy.get('#jenis').select(3).should('have.value', 'Dompet Pendidikan', 'contains', 'Dompet Pendidikan')
+        cy.get('#jenis').select(4).should('have.value', 'Dompet Kesehatan', 'contains', 'Dompet Kesehatan')
+        cy.get('#jenis').select(5).should('have.value', 'Dompet Solidaritas Dunia Islam', 'contains', 'Dompet Solidaritas Dunia Islam')
+        cy.get('#jenis').select(6).should('have.value', 'Dompet Palestina', 'contains', 'Dompet Palestina')
+        cy.get('#jenis').select(7).should('have.value', 'Dompet Peduli Mustahik', 'contains', 'Dompet Peduli Mustahik')
+        cy.get('#jenis').select(8).should('have.value', 'Dompet Yatim', 'contains', 'Dompet Yatim')
+        cy.get('#jenis').select(9).should('have.value', 'Dompet Pemberdayaan Ekonomi', 'contains', 'Dompet Pemberdayaan ekonomi')
+        cy.get('#jenis').select(10).should('have.value', 'Dompet Bantuan Hukum', 'contains', 'Dompet Bantuan Hukum')
+        cy.get('#jenis').select(11).should('have.value', 'Dompet Sekolah Jeddah', 'contains', 'Dompet Sekolah Jeddah')
 
         // test jenis pembayaran Sedekah
         cy.get('#type_of_fund').select(2).should('have.value', 'Sedekah')
 
-        cy.get('#jenis').select(0)
+        cy.get('#jenis').select(0).should('have.value', 'Sedekah BAZNAS', 'contains', 'Sedekah BAZNAS')
 
         // test jenis pembayaran fidyah
         cy.get('#type_of_fund').select(3).should('have.value', 'Fidyah')
 
-        cy.get('#jenis').select(0)
+        cy.get('#jenis').select(0).should('have.value', 'Fidyah', 'contains', 'Fidyah')
 
         // test jenis pembayaran kurban
         cy.get('#type_of_fund').select(4).should('have.value', 'Kurban')
 
-        cy.get('#jenis').select(0)
-        cy.get('#jenis').select(1)
-        cy.get('#jenis').select(2)
-        cy.get('#jenis').select(3)
+        // cy.get('#jenis').select(0).should('have.value', '', 'contains', '')
+        cy.get('#jenis').select(1).should('have.value', 'Kurban Kambing', 'contains', 'Kurban Kambing')
+        cy.get('#jenis').select(2).should('have.value', 'Kurban Sapi', 'contains', 'Kurban Sapi')
+        cy.get('#jenis').select(3).should('have.value', 'Kurban 1/7 Sapi', 'contains', '1/7 Kurban sapi')
 
         // test NPWZ
         cy.get(':nth-child(3) > :nth-child(1) > .form-group > .form-control').eq(0).type("00000")
@@ -71,12 +71,12 @@ describe('Konfirmasi Zakat', () => {
         cy.get('#bank_asal').eq(0).type("testing")
 
         // test tujuan bank
-        cy.get('#bank_name').select(0)
-        cy.get('#bank_name').select(1)
-        cy.get('#bank_name').select(2)
-        cy.get('#bank_name').select(3)
-        cy.get('#bank_name').select(4)
-        cy.get('#bank_name').select(5)
+        cy.get('#bank_name').select(1).should('have.value', 'BCA Syariah', 'contains', 'BCA Syariah (0461666877)')
+        cy.get('#bank_name').select(2).should('have.value', 'BPD DIY SYARIAH', 'contains', 'BPD DIY SYARIAH (801111000053)')
+        cy.get('#bank_name').select(3).should('have.value', 'BPD DIY', 'contains', 'BPD DIY (006111001057)')
+        cy.get('#bank_name').select(4).should('have.value', 'BANK JOGJA', 'contains', 'BANK JOGJA (2020000001)')
+        cy.get('#bank_name').select(5).should('have.value', 'KB BUKOPIN SYARIAH', 'contains', 'KB BUKOPIN SYARIAH (7709007310)')
+        cy.get('#bank_name').select(6).should('have.value', 'MAYBANK SYARIAH', 'contains', 'MAYBANK SYARIAH (2726000056)')
 
         // test nominal
         cy.get('#nominal').eq(0).type("1000000")
@@ -94,9 +94,9 @@ describe('Konfirmasi Zakat', () => {
         cy.get('input[type="file"]').selectFile('cypress\\assets\\testing.jpg')
 
         // test captcha
-        // cy.get('#captcha_code').eq(0).type("")
+        cy.get('#captcha_code')
 
         // submit button
-        cy.get(':nth-child(2) > .btn').click()
+        // cy.get(':nth-child(2) > .btn').click()
     })
 })
