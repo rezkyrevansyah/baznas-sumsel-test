@@ -71,21 +71,28 @@ describe('Konfirmasi Zakat', () => {
         cy.get('#bank_asal').eq(0).type("testing")
 
         // test tujuan bank
+        cy.get('#bank_name').select(0).contains('Pilih Bank Tujuan')
         cy.get('#bank_name').select(1).should('have.value', 'BCA Syariah', 'contains', 'BCA Syariah (0461666877)')
         cy.get('#bank_name').select(2).should('have.value', 'BPD DIY SYARIAH', 'contains', 'BPD DIY SYARIAH (801111000053)')
         cy.get('#bank_name').select(3).should('have.value', 'BPD DIY', 'contains', 'BPD DIY (006111001057)')
         cy.get('#bank_name').select(4).should('have.value', 'BANK JOGJA', 'contains', 'BANK JOGJA (2020000001)')
         cy.get('#bank_name').select(5).should('have.value', 'KB BUKOPIN SYARIAH', 'contains', 'KB BUKOPIN SYARIAH (7709007310)')
         cy.get('#bank_name').select(6).should('have.value', 'MAYBANK SYARIAH', 'contains', 'MAYBANK SYARIAH (2726000056)')
+        cy.get('#bank_name').select(7).should('have.value', 'CIMB NIAGA SYARIAH', 'contains', 'CIMB NIAGA SYARIAH (861050505100)')
+        cy.get('#bank_name').select(8).should('have.value', 'MUAMALAT', 'contains', 'MUAMALAT (5390001935)')
+        cy.get('#bank_name').select(9).should('have.value', 'BANK MANDIRI', 'contains', 'BANK MANDIRI (1370050000989)')
+        cy.get('#bank_name').select(10).should('have.value', 'BRI', 'contains', 'BRI (153101000007309)')
+        cy.get('#bank_name').select(11).should('have.value', 'BNI', 'contains', 'BNI (1331441771)')
+        cy.get('#bank_name').select(12).should('have.value', 'BSI', 'contains', 'BSI (4441111113)')
 
         // test nominal
         cy.get('#nominal').eq(0).type("1000000")
 
         // test cara pembayaran
-        cy.get(':nth-child(7) > :nth-child(1) > .form-group > .form-control').select(0)
-        cy.get(':nth-child(7) > :nth-child(1) > .form-group > .form-control').select(1)
-        cy.get(':nth-child(7) > :nth-child(1) > .form-group > .form-control').select(2)
-        cy.get(':nth-child(7) > :nth-child(1) > .form-group > .form-control').select(3)
+        cy.get(':nth-child(7) > :nth-child(1) > .form-group > .form-control').select(0).should('have.value', 'ATM ', 'contains', 'ATM ')
+        cy.get(':nth-child(7) > :nth-child(1) > .form-group > .form-control').select(1).should('have.value', 'E-Banking', 'contains', 'E-Banking')
+        cy.get(':nth-child(7) > :nth-child(1) > .form-group > .form-control').select(2).should('have.value', 'SMS', 'contains', 'SMS')
+        cy.get(':nth-child(7) > :nth-child(1) > .form-group > .form-control').select(3).should('have.value', 'Mobile Banking', 'contains', 'Mobile Banking')
 
         // test catatan
         cy.get(':nth-child(7) > :nth-child(2) > .form-group > .form-control').eq(0).type("testing")
